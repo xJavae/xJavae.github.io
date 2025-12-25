@@ -2,470 +2,640 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>疯狂星期四V我50</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>疯狂星期四 V我50</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        :root {
+            --kfc-red: #e4002b;
+            --kfc-gold: #ffc72c;
+            --light-red: #fff0f3;
+            --dark-red: #b80022;
+            --text-dark: #333333;
+            --text-light: #666666;
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+        }
+        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+            -webkit-tap-highlight-color: transparent;
         }
         
         body {
-            background-color: #f5f5f5;
-            color: #333;
-            overflow-x: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: linear-gradient(135deg, #fff9f9 0%, #fff0f0 50%, #ffe8e8 100%);
             min-height: 100vh;
+            overflow-x: hidden;
+            padding: 0;
         }
         
         .container {
-            max-width: 800px;
+            max-width: 100%;
+            width: 100%;
             margin: 0 auto;
-            padding: 20px;
+            padding: 20px 15px 40px;
             position: relative;
-            z-index: 10;
         }
         
-        .header {
-            text-align: center;
-            margin-bottom: 30px;
+        /* 顶部装饰 */
+        .top-decoration {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(to right, var(--kfc-red), var(--dark-red));
+            border-radius: 0 0 40% 40%;
+            z-index: 1;
+            overflow: hidden;
         }
         
-        .kfc-logo {
-            color: #e4002b;
-            font-size: 3.5rem;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            position: relative;
-            display: inline-block;
-        }
-        
-        .kfc-logo::after {
+        .top-decoration::after {
             content: "";
             position: absolute;
             bottom: -10px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 200px;
-            height: 4px;
-            background: linear-gradient(90deg, #e4002b, #ffc72c);
-            border-radius: 2px;
+            left: 0;
+            width: 100%;
+            height: 20px;
+            background: var(--kfc-gold);
+            border-radius: 50%;
+        }
+        
+        /* 头部区域 */
+        .header {
+            text-align: center;
+            padding: 30px 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .kfc-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: white;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            box-shadow: var(--shadow);
+            font-weight: 900;
+            font-size: 1.8rem;
+            color: var(--kfc-red);
+            border: 3px solid var(--kfc-gold);
         }
         
         .title {
-            font-size: 2.8rem;
-            color: #e4002b;
-            margin: 25px 0;
-            text-align: center;
-            text-shadow: 3px 3px 0 #ffc72c;
-            animation: pulse 2s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
-            100% {
-                transform: scale(1.05);
-            }
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: white;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            letter-spacing: 1px;
         }
         
         .subtitle {
-            font-size: 1.5rem;
-            color: #333;
-            text-align: center;
-            margin-bottom: 40px;
-            font-weight: bold;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            font-weight: 500;
         }
         
-        .main-content {
-            background-color: rgba(255, 255, 255, 0.95);
-            border-radius: 20px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            margin-bottom: 40px;
+        /* 内容卡片 */
+        .content-card {
+            background: var(--card-bg);
+            border-radius: 24px;
+            padding: 25px;
+            margin-top: 20px;
+            box-shadow: var(--shadow);
             position: relative;
-            overflow: hidden;
-            border: 5px solid #e4002b;
+            z-index: 2;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
         }
         
-        .cta-section {
+        .promo-text {
+            font-size: 1.4rem;
+            line-height: 1.8;
             text-align: center;
-            margin-bottom: 40px;
-        }
-        
-        .cta-text {
-            font-size: 1.8rem;
-            color: #e4002b;
+            color: var(--text-dark);
             margin-bottom: 25px;
-            line-height: 1.4;
-            font-weight: bold;
+            padding: 0 10px;
         }
         
-        .v50-btn {
-            background: linear-gradient(135deg, #e4002b, #ff6b6b);
+        .highlight {
+            color: var(--kfc-red);
+            font-weight: 800;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: "";
+            position: absolute;
+            bottom: 2px;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: rgba(255, 199, 44, 0.3);
+            z-index: -1;
+            border-radius: 3px;
+        }
+        
+        /* 主按钮 */
+        .action-section {
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .v50-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, var(--kfc-red) 0%, var(--dark-red) 100%);
             color: white;
             border: none;
-            padding: 20px 50px;
-            font-size: 2rem;
-            font-weight: bold;
-            border-radius: 50px;
+            padding: 20px 40px;
+            font-size: 1.8rem;
+            font-weight: 800;
+            border-radius: 60px;
             cursor: pointer;
-            box-shadow: 0 10px 20px rgba(228, 0, 43, 0.4);
-            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(228, 0, 43, 0.3);
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
             position: relative;
             overflow: hidden;
-            z-index: 1;
-            margin-top: 20px;
+            min-width: 260px;
+            letter-spacing: 1px;
         }
         
-        .v50-btn:hover {
+        .v50-button:hover, .v50-button:active {
             transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(228, 0, 43, 0.6);
+            box-shadow: 0 15px 30px rgba(228, 0, 43, 0.4);
         }
         
-        .v50-btn:active {
-            transform: translateY(0);
+        .v50-button:active {
+            transform: translateY(-2px);
         }
         
-        .v50-btn::after {
-            content: "";
+        .v50-button i {
+            margin: 0 12px;
+            font-size: 1.6rem;
+        }
+        
+        .button-glow {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, #ff6b6b, #e4002b);
-            z-index: -1;
-            transition: opacity 0.3s ease;
+            background: radial-gradient(circle at center, rgba(255, 255, 255, 0.2) 0%, transparent 70%);
+            border-radius: 60px;
+            z-index: 1;
             opacity: 0;
+            transition: opacity 0.3s;
         }
         
-        .v50-btn:hover::after {
+        .v50-button:hover .button-glow {
             opacity: 1;
         }
         
-        .payment-section {
-            background-color: #f9f9f9;
-            border-radius: 15px;
-            padding: 25px;
-            margin-top: 40px;
+        /* 倒计时 */
+        .countdown-section {
+            margin: 35px 0;
+        }
+        
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--text-dark);
             text-align: center;
-            border: 3px dashed #e4002b;
-        }
-        
-        .payment-title {
-            font-size: 1.8rem;
-            color: #e4002b;
             margin-bottom: 20px;
-        }
-        
-        .qrcode-container {
-            background-color: white;
-            padding: 20px;
-            border-radius: 15px;
-            display: inline-block;
-            margin: 20px auto;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-        }
-        
-        .qrcode {
-            width: 200px;
-            height: 200px;
-            background-color: #f0f0f0;
+            font-weight: 700;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 5rem;
-            color: #e4002b;
         }
         
-        .payment-info {
-            margin-top: 20px;
-            font-size: 1.2rem;
-            color: #555;
+        .section-title i {
+            margin-right: 10px;
+            color: var(--kfc-red);
         }
         
-        .food-items {
+        .countdown {
             display: flex;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            margin-top: 40px;
+            justify-content: center;
+            gap: 15px;
+        }
+        
+        .time-unit {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 70px;
+        }
+        
+        .time-value {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: var(--kfc-red);
+            background: white;
+            width: 70px;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            margin-bottom: 8px;
+            border: 2px solid rgba(255, 199, 44, 0.3);
+        }
+        
+        .time-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+            font-weight: 600;
+        }
+        
+        /* 食物展示 */
+        .food-showcase {
+            margin: 30px 0;
+        }
+        
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            margin-top: 20px;
         }
         
         .food-item {
-            text-align: center;
-            margin: 15px;
-            width: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 10px;
+            background: white;
+            border-radius: 18px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .food-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
         }
         
         .food-icon {
-            font-size: 4rem;
-            color: #e4002b;
-            margin-bottom: 10px;
+            font-size: 2.8rem;
+            margin-bottom: 12px;
+            filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.1));
         }
         
         .food-name {
-            font-size: 1.2rem;
-            color: #333;
-            font-weight: bold;
-        }
-        
-        .footer {
+            font-size: 1rem;
+            font-weight: 700;
+            color: var(--text-dark);
             text-align: center;
-            color: #e4002b;
-            margin-top: 40px;
-            font-size: 1.2rem;
-            padding-bottom: 20px;
         }
         
-        .background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        .food-price {
+            font-size: 0.9rem;
+            color: var(--kfc-red);
+            font-weight: 800;
+            margin-top: 5px;
+        }
+        
+        /* 提示区域 */
+        .hint {
+            text-align: center;
+            font-size: 0.95rem;
+            color: var(--text-light);
+            margin-top: 30px;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 16px;
+            border-left: 4px solid var(--kfc-gold);
+        }
+        
+        /* 浮动元素 */
+        .floating-element {
+            position: absolute;
             z-index: 1;
-            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1626082895612-9e6d8e8f8c2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-        }
-        
-        .floating-chicken {
-            position: fixed;
             font-size: 2rem;
-            color: #ffc72c;
-            z-index: 5;
-            animation: float 6s infinite ease-in-out;
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
         }
         
         @keyframes float {
-            0%, 100% {
-                transform: translateY(0) rotate(0deg);
-            }
-            50% {
-                transform: translateY(-20px) rotate(10deg);
-            }
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(10deg); }
         }
         
-        .counter {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background-color: #e4002b;
-            color: white;
-            padding: 10px 15px;
-            border-radius: 10px;
-            font-weight: bold;
-            z-index: 100;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        @media (max-width: 768px) {
+        /* 响应式设计 */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 600px;
+                padding: 30px 20px 50px;
+            }
+            
             .title {
-                font-size: 2.2rem;
+                font-size: 3rem;
             }
             
-            .kfc-logo {
-                font-size: 2.8rem;
+            .promo-text {
+                font-size: 1.6rem;
             }
             
-            .v50-btn {
-                font-size: 1.8rem;
-                padding: 18px 40px;
-            }
-            
-            .main-content {
-                padding: 20px;
-            }
-            
-            .food-items {
-                justify-content: center;
+            .food-grid {
+                grid-template-columns: repeat(5, 1fr);
             }
         }
         
         @media (max-width: 480px) {
             .title {
-                font-size: 1.8rem;
-            }
-            
-            .kfc-logo {
                 font-size: 2.2rem;
             }
             
-            .v50-btn {
-                font-size: 1.5rem;
-                padding: 15px 30px;
+            .promo-text {
+                font-size: 1.3rem;
+                padding: 0 5px;
             }
             
-            .container {
-                padding: 15px;
+            .v50-button {
+                min-width: 240px;
+                padding: 18px 35px;
+                font-size: 1.6rem;
+            }
+            
+            .countdown {
+                gap: 10px;
+            }
+            
+            .time-unit {
+                min-width: 60px;
+            }
+            
+            .time-value {
+                width: 60px;
+                height: 60px;
+                font-size: 1.9rem;
+            }
+            
+            .food-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+        }
+        
+        /* 防止移动端点击延迟 */
+        @media (hover: none) and (pointer: coarse) {
+            .v50-button:hover {
+                transform: none;
+                box-shadow: 0 10px 25px rgba(228, 0, 43, 0.3);
+            }
+            
+            .food-item:hover {
+                transform: none;
+                box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             }
         }
     </style>
 </head>
 <body>
-    <!-- 背景图 -->
-    <div class="background"></div>
+    <!-- 浮动元素 -->
+    <div class="floating-element" style="top: 15%; left: 5%;">🍗</div>
+    <div class="floating-element" style="top: 10%; right: 8%; animation-delay: 1s;">🍔</div>
+    <div class="floating-element" style="bottom: 20%; left: 7%; animation-delay: 2s;">🥤</div>
+    <div class="floating-element" style="bottom: 15%; right: 6%; animation-delay: 3s;">🍟</div>
     
-    <!-- 浮动炸鸡元素 -->
-    <div class="floating-chicken" style="top: 10%; left: 5%;">🍗</div>
-    <div class="floating-chicken" style="top: 15%; right: 10%;">🍔</div>
-    <div class="floating-chicken" style="bottom: 20%; left: 8%;">🥤</div>
-    <div class="floating-chicken" style="bottom: 30%; right: 5%;">🍟</div>
-    
-    <!-- 请求计数器 -->
-    <div class="counter" id="requestCounter">已收到请求: 0 次</div>
+    <!-- 顶部装饰 -->
+    <div class="top-decoration"></div>
     
     <div class="container">
+        <!-- 头部 -->
         <header class="header">
             <div class="kfc-logo">KFC</div>
             <h1 class="title">疯狂星期四</h1>
-            <div class="subtitle">又到了每周最期待的日子！</div>
+            <p class="subtitle">又到了每周最快乐的日子！</p>
         </header>
         
-        <main class="main-content">
-            <div class="cta-section">
-                <p class="cta-text">今天疯狂星期四，谁请我吃肯德基？<br>我已经三个月没吃肯德基了！</p>
-                <button class="v50-btn" id="v50Button">
-                    <i class="fas fa-gift"></i> V我50 <i class="fas fa-gift"></i>
+        <!-- 主要内容卡片 -->
+        <main class="content-card">
+            <div class="promo-text">
+                今天是<span class="highlight">疯狂星期四</span>！<br>
+                我已经<span class="highlight">三个月</span>没吃肯德基了，<br>
+                <span class="highlight">谁请我吃？V我50！</span>
+            </div>
+            
+            <!-- 主按钮 -->
+            <div class="action-section">
+                <button class="v50-button" id="v50Button">
+                    <div class="button-glow"></div>
+                    <i class="fas fa-gift"></i>
+                    马上V我50
+                    <i class="fas fa-gift"></i>
                 </button>
             </div>
             
-            <div class="payment-section" id="paymentSection">
-                <h2 class="payment-title">扫码请我吃肯德基</h2>
-                <div class="qrcode-container">
-                    <div class="qrcode">
-                        <i class="fas fa-qrcode"></i>
+            <!-- 倒计时 -->
+            <div class="countdown-section">
+                <h2 class="section-title">
+                    <i class="fas fa-clock"></i>
+                    本周疯狂倒计时
+                </h2>
+                <div class="countdown">
+                    <div class="time-unit">
+                        <div class="time-value" id="hours">12</div>
+                        <div class="time-label">小时</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value" id="minutes">35</div>
+                        <div class="time-label">分钟</div>
+                    </div>
+                    <div class="time-unit">
+                        <div class="time-value" id="seconds">18</div>
+                        <div class="time-label">秒</div>
                     </div>
                 </div>
-                <div class="payment-info">
-                    <p>使用支付宝/微信扫码转账</p>
-                    <p><strong>金额：50元</strong></p>
-                    <p>转账备注：疯狂星期四</p>
+            </div>
+            
+            <!-- 食物展示 -->
+            <div class="food-showcase">
+                <h2 class="section-title">
+                    <i class="fas fa-utensils"></i>
+                    今日心动美食
+                </h2>
+                <div class="food-grid">
+                    <div class="food-item">
+                        <div class="food-icon">🍗</div>
+                        <div class="food-name">香辣鸡腿堡</div>
+                        <div class="food-price">¥29</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🍟</div>
+                        <div class="food-name">黄金脆薯</div>
+                        <div class="food-price">¥15</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🥤</div>
+                        <div class="food-name">冰爽可乐</div>
+                        <div class="food-price">¥12</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🍔</div>
+                        <div class="food-name">劲脆鸡腿堡</div>
+                        <div class="food-price">¥27</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🍦</div>
+                        <div class="food-name">圣代冰淇淋</div>
+                        <div class="food-price">¥14</div>
+                    </div>
+                    <div class="food-item">
+                        <div class="food-icon">🍗🍗</div>
+                        <div class="food-name">炸鸡桶</div>
+                        <div class="food-price">¥59</div>
+                    </div>
                 </div>
             </div>
             
-            <div class="food-items">
-                <div class="food-item">
-                    <div class="food-icon">🍗</div>
-                    <div class="food-name">香辣鸡腿堡</div>
-                </div>
-                <div class="food-item">
-                    <div class="food-icon">🍟</div>
-                    <div class="food-name">薯条</div>
-                </div>
-                <div class="food-item">
-                    <div class="food-icon">🥤</div>
-                    <div class="food-name">可乐</div>
-                </div>
-                <div class="food-item">
-                    <div class="food-icon">🍔</div>
-                    <div class="food-name">劲脆鸡腿堡</div>
-                </div>
+            <!-- 提示 -->
+            <div class="hint">
+                <i class="fas fa-info-circle"></i> 
+                提示：点击上方按钮，分享给你的好友，也许今天就有惊喜！
             </div>
         </main>
-        
-        <footer class="footer">
-            <p>本页面仅供娱乐，祝大家圣诞节快乐！</p>
-            <p>肯德基®是百胜餐饮集团旗下品牌</p>
-        </footer>
     </div>
-    
+
     <script>
-        // 初始化请求计数器
-        let requestCount = localStorage.getItem('kfcRequestCount') || 0;
-        const requestCounter = document.getElementById('requestCounter');
-        requestCounter.textContent = `已收到请求: ${requestCount} 次`;
+        // 倒计时功能
+        function updateCountdown() {
+            const now = new Date();
+            const today = now.getDay(); // 0是周日，4是周四
+            const targetDay = 4; // 周四
+            
+            // 计算到下一个周四的剩余时间
+            let daysUntilThursday = targetDay - today;
+            if (daysUntilThursday < 0 || (daysUntilThursday === 0 && now.getHours() >= 23)) {
+                daysUntilThursday += 7;
+            }
+            
+            // 设置下一个周四的23:59:59为目标时间
+            const targetDate = new Date(now);
+            targetDate.setDate(now.getDate() + daysUntilThursday);
+            targetDate.setHours(23, 59, 59, 999);
+            
+            const timeDiff = targetDate - now;
+            
+            if (timeDiff > 0) {
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                
+                document.getElementById('hours').textContent = hours.toString().padStart(2, '0');
+                document.getElementById('minutes').textContent = minutes.toString().padStart(2, '0');
+                document.getElementById('seconds').textContent = seconds.toString().padStart(2, '0');
+            } else {
+                // 如果已经过了周四，显示"00"
+                document.getElementById('hours').textContent = "00";
+                document.getElementById('minutes').textContent = "00";
+                document.getElementById('seconds').textContent = "00";
+            }
+        }
         
-        // V我50按钮点击事件
+        // 初始更新倒计时
+        updateCountdown();
+        
+        // 每秒更新倒计时
+        setInterval(updateCountdown, 1000);
+        
+        // V我50按钮交互
         const v50Button = document.getElementById('v50Button');
-        const paymentSection = document.getElementById('paymentSection');
-        
-        // 初始隐藏支付部分
-        paymentSection.style.display = 'none';
+        let clickCount = 0;
+        const messages = [
+            "真的V我50吗？",
+            "谢谢老板！",
+            "疯狂星期四万岁！",
+            "KFC我来了！",
+            "转账吧，我准备好了！",
+            "鸡腿堡在召唤！",
+            "就等你的红包了！",
+            "好人一生平安！"
+        ];
         
         v50Button.addEventListener('click', function() {
-            // 增加请求计数
-            requestCount++;
-            localStorage.setItem('kfcRequestCount', requestCount);
-            requestCounter.textContent = `已收到请求: ${requestCount} 次`;
+            clickCount++;
             
-            // 显示支付部分
-            paymentSection.style.display = 'block';
-            
-            // 滚动到支付部分
-            paymentSection.scrollIntoView({ behavior: 'smooth' });
-            
-            // 按钮动画效果
-            v50Button.innerHTML = '<i class="fas fa-heart"></i> 谢谢你！ <i class="fas fa-heart"></i>';
-            v50Button.style.background = 'linear-gradient(135deg, #ffc72c, #e4002b)';
-            
-            // 3秒后恢复按钮
+            // 按钮点击动画
+            this.style.transform = 'translateY(-2px) scale(0.98)';
             setTimeout(() => {
-                v50Button.innerHTML = '<i class="fas fa-gift"></i> V我50 <i class="fas fa-gift"></i>';
-                v50Button.style.background = 'linear-gradient(135deg, #e4002b, #ff6b6b)';
-            }, 5000);
+                this.style.transform = 'translateY(-5px)';
+            }, 150);
             
-            // 创建烟花效果
-            createFireworks();
+            // 更新按钮文本
+            const messageIndex = (clickCount - 1) % messages.length;
+            this.innerHTML = `<div class="button-glow"></div><i class="fas fa-gift"></i> ${messages[messageIndex]} <i class="fas fa-gift"></i>`;
+            
+            // 创建点击效果
+            createClickEffect();
+            
+            // 5秒后恢复按钮文本
+            setTimeout(() => {
+                this.innerHTML = `<div class="button-glow"></div><i class="fas fa-gift"></i> 马上V我50 <i class="fas fa-gift"></i>`;
+                this.style.transform = 'translateY(-5px)';
+            }, 3000);
         });
         
-        // 创建烟花效果函数
-        function createFireworks() {
-            const colors = ['#e4002b', '#ffc72c', '#ffffff', '#ff6b6b'];
+        // 创建点击效果
+        function createClickEffect() {
+            const effects = ['💰', '🎉', '🍗', '🎁'];
+            const effectCount = 8;
             
-            for (let i = 0; i < 30; i++) {
-                const firework = document.createElement('div');
-                firework.innerHTML = '🎉';
-                firework.style.position = 'fixed';
-                firework.style.left = `${Math.random() * 100}vw`;
-                firework.style.top = `${Math.random() * 100}vh`;
-                firework.style.fontSize = `${Math.random() * 20 + 15}px`;
-                firework.style.opacity = '1';
-                firework.style.zIndex = '1000';
-                firework.style.pointerEvents = 'none';
+            for (let i = 0; i < effectCount; i++) {
+                const effect = document.createElement('div');
+                effect.textContent = effects[Math.floor(Math.random() * effects.length)];
+                effect.style.position = 'fixed';
+                effect.style.left = '50%';
+                effect.style.top = '50%';
+                effect.style.fontSize = `${Math.random() * 20 + 20}px`;
+                effect.style.zIndex = '1000';
+                effect.style.pointerEvents = 'none';
+                effect.style.opacity = '1';
+                effect.style.transform = 'translate(-50%, -50%)';
                 
-                document.body.appendChild(firework);
+                document.body.appendChild(effect);
                 
-                // 烟花动画
-                const animation = firework.animate([
-                    { transform: 'translateY(0) scale(1)', opacity: 1 },
-                    { transform: `translateY(${-Math.random() * 100 - 50}px) scale(0.5)`, opacity: 0 }
+                // 随机方向动画
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 100 + 50;
+                const targetX = Math.cos(angle) * distance;
+                const targetY = Math.sin(angle) * distance;
+                
+                const animation = effect.animate([
+                    { transform: 'translate(-50%, -50%) scale(1)', opacity: 1 },
+                    { transform: `translate(calc(-50% + ${targetX}px), calc(-50% + ${targetY}px)) scale(0.5)`, opacity: 0 }
                 ], {
-                    duration: Math.random() * 1000 + 1000,
+                    duration: Math.random() * 800 + 700,
                     easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
                 });
                 
-                // 动画结束后移除元素
                 animation.onfinish = () => {
-                    firework.remove();
+                    effect.remove();
                 };
             }
         }
         
-        // 背景动画：浮动炸鸡
-        const floatingChickens = document.querySelectorAll('.floating-chicken');
-        floatingChickens.forEach(chicken => {
-            // 为每个炸鸡设置不同的浮动速度
-            const duration = Math.random() * 8 + 4;
-            chicken.style.animationDuration = `${duration}s`;
-            
-            // 随机延迟开始动画
-            const delay = Math.random() * 5;
-            chicken.style.animationDelay = `${delay}s`;
-        });
-        
-        // 页面加载时显示欢迎信息
-        window.addEventListener('load', function() {
-            setTimeout(() => {
-                alert("欢迎来到疯狂星期四！今天谁V我50？");
-            }, 500);
-        });
+        // 移动端优化：防止双击缩放
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
     </script>
 </body>
 </html>
