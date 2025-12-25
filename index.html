@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>疯狂星期四V我50</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial Rounded MT Bold', 'Arial', sans-serif;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            color: #333;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .kfc-logo {
+            color: #e4002b;
+            font-size: 3.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .kfc-logo::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 200px;
+            height: 4px;
+            background: linear-gradient(90deg, #e4002b, #ffc72c);
+            border-radius: 2px;
+        }
+        
+        .title {
+            font-size: 2.8rem;
+            color: #e4002b;
+            margin: 25px 0;
+            text-align: center;
+            text-shadow: 3px 3px 0 #ffc72c;
+            animation: pulse 2s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            100% {
+                transform: scale(1.05);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.5rem;
+            color: #333;
+            text-align: center;
+            margin-bottom: 40px;
+            font-weight: bold;
+        }
+        
+        .main-content {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+            border: 5px solid #e4002b;
+        }
+        
+        .cta-section {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .cta-text {
+            font-size: 1.8rem;
+            color: #e4002b;
+            margin-bottom: 25px;
+            line-height: 1.4;
+            font-weight: bold;
+        }
+        
+        .v50-btn {
+            background: linear-gradient(135deg, #e4002b, #ff6b6b);
+            color: white;
+            border: none;
+            padding: 20px 50px;
+            font-size: 2rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 10px 20px rgba(228, 0, 43, 0.4);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            margin-top: 20px;
+        }
+        
+        .v50-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 25px rgba(228, 0, 43, 0.6);
+        }
+        
+        .v50-btn:active {
+            transform: translateY(0);
+        }
+        
+        .v50-btn::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #ff6b6b, #e4002b);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+        
+        .v50-btn:hover::after {
+            opacity: 1;
+        }
+        
+        .payment-section {
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 40px;
+            text-align: center;
+            border: 3px dashed #e4002b;
+        }
+        
+        .payment-title {
+            font-size: 1.8rem;
+            color: #e4002b;
+            margin-bottom: 20px;
+        }
+        
+        .qrcode-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 15px;
+            display: inline-block;
+            margin: 20px auto;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .qrcode {
+            width: 200px;
+            height: 200px;
+            background-color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 5rem;
+            color: #e4002b;
+        }
+        
+        .payment-info {
+            margin-top: 20px;
+            font-size: 1.2rem;
+            color: #555;
+        }
+        
+        .food-items {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        
+        .food-item {
+            text-align: center;
+            margin: 15px;
+            width: 150px;
+        }
+        
+        .food-icon {
+            font-size: 4rem;
+            color: #e4002b;
+            margin-bottom: 10px;
+        }
+        
+        .food-name {
+            font-size: 1.2rem;
+            color: #333;
+            font-weight: bold;
+        }
+        
+        .footer {
+            text-align: center;
+            color: #e4002b;
+            margin-top: 40px;
+            font-size: 1.2rem;
+            padding-bottom: 20px;
+        }
+        
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: linear-gradient(rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.9)), url('https://images.unsplash.com/photo-1626082895612-9e6d8e8f8c2f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        
+        .floating-chicken {
+            position: fixed;
+            font-size: 2rem;
+            color: #ffc72c;
+            z-index: 5;
+            animation: float 6s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg);
+            }
+            50% {
+                transform: translateY(-20px) rotate(10deg);
+            }
+        }
+        
+        .counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #e4002b;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-weight: bold;
+            z-index: 100;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.2rem;
+            }
+            
+            .kfc-logo {
+                font-size: 2.8rem;
+            }
+            
+            .v50-btn {
+                font-size: 1.8rem;
+                padding: 18px 40px;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .food-items {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .kfc-logo {
+                font-size: 2.2rem;
+            }
+            
+            .v50-btn {
+                font-size: 1.5rem;
+                padding: 15px 30px;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景图 -->
+    <div class="background"></div>
+    
+    <!-- 浮动炸鸡元素 -->
+    <div class="floating-chicken" style="top: 10%; left: 5%;">🍗</div>
+    <div class="floating-chicken" style="top: 15%; right: 10%;">🍔</div>
+    <div class="floating-chicken" style="bottom: 20%; left: 8%;">🥤</div>
+    <div class="floating-chicken" style="bottom: 30%; right: 5%;">🍟</div>
+    
+    <!-- 请求计数器 -->
+    <div class="counter" id="requestCounter">已收到请求: 0 次</div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="kfc-logo">KFC</div>
+            <h1 class="title">疯狂星期四</h1>
+            <div class="subtitle">又到了每周最期待的日子！</div>
+        </header>
+        
+        <main class="main-content">
+            <div class="cta-section">
+                <p class="cta-text">今天疯狂星期四，谁请我吃肯德基？<br>我已经三个月没吃肯德基了！</p>
+                <button class="v50-btn" id="v50Button">
+                    <i class="fas fa-gift"></i> V我50 <i class="fas fa-gift"></i>
+                </button>
+            </div>
+            
+            <div class="payment-section" id="paymentSection">
+                <h2 class="payment-title">扫码请我吃肯德基</h2>
+                <div class="qrcode-container">
+                    <div class="qrcode">
+                        <i class="fas fa-qrcode"></i>
+                    </div>
+                </div>
+                <div class="payment-info">
+                    <p>使用支付宝/微信扫码转账</p>
+                    <p><strong>金额：50元</strong></p>
+                    <p>转账备注：疯狂星期四</p>
+                </div>
+            </div>
+            
+            <div class="food-items">
+                <div class="food-item">
+                    <div class="food-icon">🍗</div>
+                    <div class="food-name">香辣鸡腿堡</div>
+                </div>
+                <div class="food-item">
+                    <div class="food-icon">🍟</div>
+                    <div class="food-name">薯条</div>
+                </div>
+                <div class="food-item">
+                    <div class="food-icon">🥤</div>
+                    <div class="food-name">可乐</div>
+                </div>
+                <div class="food-item">
+                    <div class="food-icon">🍔</div>
+                    <div class="food-name">劲脆鸡腿堡</div>
+                </div>
+            </div>
+        </main>
+        
+        <footer class="footer">
+            <p>本页面仅供娱乐，祝大家圣诞节快乐！</p>
+            <p>肯德基®是百胜餐饮集团旗下品牌</p>
+        </footer>
+    </div>
+    
+    <script>
+        // 初始化请求计数器
+        let requestCount = localStorage.getItem('kfcRequestCount') || 0;
+        const requestCounter = document.getElementById('requestCounter');
+        requestCounter.textContent = `已收到请求: ${requestCount} 次`;
+        
+        // V我50按钮点击事件
+        const v50Button = document.getElementById('v50Button');
+        const paymentSection = document.getElementById('paymentSection');
+        
+        // 初始隐藏支付部分
+        paymentSection.style.display = 'none';
+        
+        v50Button.addEventListener('click', function() {
+            // 增加请求计数
+            requestCount++;
+            localStorage.setItem('kfcRequestCount', requestCount);
+            requestCounter.textContent = `已收到请求: ${requestCount} 次`;
+            
+            // 显示支付部分
+            paymentSection.style.display = 'block';
+            
+            // 滚动到支付部分
+            paymentSection.scrollIntoView({ behavior: 'smooth' });
+            
+            // 按钮动画效果
+            v50Button.innerHTML = '<i class="fas fa-heart"></i> 谢谢你！ <i class="fas fa-heart"></i>';
+            v50Button.style.background = 'linear-gradient(135deg, #ffc72c, #e4002b)';
+            
+            // 3秒后恢复按钮
+            setTimeout(() => {
+                v50Button.innerHTML = '<i class="fas fa-gift"></i> V我50 <i class="fas fa-gift"></i>';
+                v50Button.style.background = 'linear-gradient(135deg, #e4002b, #ff6b6b)';
+            }, 5000);
+            
+            // 创建烟花效果
+            createFireworks();
+        });
+        
+        // 创建烟花效果函数
+        function createFireworks() {
+            const colors = ['#e4002b', '#ffc72c', '#ffffff', '#ff6b6b'];
+            
+            for (let i = 0; i < 30; i++) {
+                const firework = document.createElement('div');
+                firework.innerHTML = '🎉';
+                firework.style.position = 'fixed';
+                firework.style.left = `${Math.random() * 100}vw`;
+                firework.style.top = `${Math.random() * 100}vh`;
+                firework.style.fontSize = `${Math.random() * 20 + 15}px`;
+                firework.style.opacity = '1';
+                firework.style.zIndex = '1000';
+                firework.style.pointerEvents = 'none';
+                
+                document.body.appendChild(firework);
+                
+                // 烟花动画
+                const animation = firework.animate([
+                    { transform: 'translateY(0) scale(1)', opacity: 1 },
+                    { transform: `translateY(${-Math.random() * 100 - 50}px) scale(0.5)`, opacity: 0 }
+                ], {
+                    duration: Math.random() * 1000 + 1000,
+                    easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+                });
+                
+                // 动画结束后移除元素
+                animation.onfinish = () => {
+                    firework.remove();
+                };
+            }
+        }
+        
+        // 背景动画：浮动炸鸡
+        const floatingChickens = document.querySelectorAll('.floating-chicken');
+        floatingChickens.forEach(chicken => {
+            // 为每个炸鸡设置不同的浮动速度
+            const duration = Math.random() * 8 + 4;
+            chicken.style.animationDuration = `${duration}s`;
+            
+            // 随机延迟开始动画
+            const delay = Math.random() * 5;
+            chicken.style.animationDelay = `${delay}s`;
+        });
+        
+        // 页面加载时显示欢迎信息
+        window.addEventListener('load', function() {
+            setTimeout(() => {
+                alert("欢迎来到疯狂星期四！今天谁V我50？");
+            }, 500);
+        });
+    </script>
+</body>
+</html>
